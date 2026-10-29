@@ -74,11 +74,11 @@ const struct digest_param digest_params[] = {
 	},
 	[DIGEST_PARAM_ML_DSA_87] = {
 		.name = "ml-dsa-87",
-		.digest_tag = SEC_OID_SHA256,
+		.digest_tag = SEC_OID_SHA512,
 		.signature_tag = SEC_OID_ML_DSA_87,
 		.digest_encryption_tag = SEC_OID_ML_DSA_87,
-		.efi_guid = &efi_guid_sha256,
-		.size = 32
+		.efi_guid = &efi_guid_sha512,
+		.size = 64
 	},
 	[DIGEST_PARAM_SHA384] = {
 		.name = "sha384",
