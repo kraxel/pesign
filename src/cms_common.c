@@ -88,6 +88,14 @@ const struct digest_param digest_params[] = {
 		.efi_guid = &efi_guid_sha384,
 		.size = 48,
 	},
+	[DIGEST_PARAM_SHA512] = {
+		.name = "sha512",
+		.digest_tag = SEC_OID_SHA512,
+		.signature_tag = SEC_OID_PKCS1_SHA512_WITH_RSA_ENCRYPTION,
+		.digest_encryption_tag = SEC_OID_PKCS1_RSA_ENCRYPTION,
+		.efi_guid = &efi_guid_sha512,
+		.size = 64,
+	},
 };
 const unsigned int n_digest_params = sizeof (digest_params) / sizeof (digest_params[0]);
 
