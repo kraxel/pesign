@@ -1340,6 +1340,9 @@ generate_digest_begin(cms_context *cms)
 	}
 
 	for (unsigned int i = 0; i < n_digest_params; i++) {
+		if (!digest_params[i].name) {
+			continue;
+		}
 		digests[i].pk11ctx = PK11_CreateDigestContext(
 						digest_params[i].digest_tag);
 		if (!digests[i].pk11ctx)
@@ -1364,8 +1367,12 @@ err:
 void
 generate_digest_step(cms_context *cms, void *data, size_t len)
 {
-	for (unsigned int i = 0; i < n_digest_params; i++)
+	for (unsigned int i = 0; i < n_digest_params; i++) {
+		if (!digest_params[i].name) {
+			continue;
+		}
 		PK11_DigestOp(cms->digests[i].pk11ctx, data, len);
+	}
 }
 
 int
@@ -1374,6 +1381,9 @@ generate_digest_finish(cms_context *cms)
 	void *mark = PORT_ArenaMark(cms->arena);
 
 	for (unsigned int i = 0; i < n_digest_params; i++) {
+		if (!digest_params[i].name) {
+			continue;
+		}
 		SECItem *digest = PORT_ArenaZAlloc(cms->arena,sizeof (SECItem));
 		if (digest == NULL)
 			cngotoerr(err, cms, "could not allocate memory");
