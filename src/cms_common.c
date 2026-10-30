@@ -56,6 +56,7 @@ const struct digest_param digest_params[] = {
 		.size = 20
 	},
 #endif
+#if 0
 	[DIGEST_PARAM_ML_DSA_44] = {
 		.name = "ml-dsa-44",
 		.digest_tag = SEC_OID_SHA256,
@@ -72,6 +73,7 @@ const struct digest_param digest_params[] = {
 		.efi_guid = &efi_guid_sha384,
 		.size = 48
 	},
+#endif
 	[DIGEST_PARAM_ML_DSA_87] = {
 		.name = "ml-dsa-87",
 		.digest_tag = SEC_OID_SHA512,
